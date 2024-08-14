@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style/main.css" />
+    <title>Public API Project</title>
+  </head>
+  <body>
+    <h1>Pokemon</h1>
+    <form action="/submit" method="POST" class="form">
+      <input
+        type="text"
+        value=""
+        placeholder="Enter pokemon name"
+        name="pokemon"
+        class="text_input"
+      />
+      <button type="submit" class="form-submit">Show</button>
+    </form>
+    <%# passing the object (data) from backend to ejs view. %> <%
+    if(locals.data) {%> <%# to get all the properties %>
+    <h2>Name: <%= data.name %></h2>
+    <h4>Weight: <%= data.weight %></h4>
+    <img src="<%= data.image %>" alt="" class="pokemon_img" />
+    <p>
+      My abilities are : <% data.abilities.forEach(element => { %> <%=
+      element.ability.name %> <% }); %>
+    </p>
+    <% } %>
+    <script src="index.js" charset="UTF-8"></script>
+  </body>
+</html>
